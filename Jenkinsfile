@@ -8,7 +8,7 @@ node{
 	}
 	stage('Slack Notification'){
 	slackSend baseUrl: 'https://hooks.slack.com/services/',
-     channel: '#devops', color: '#439FE0', 
+     channel: '#devops', color: '#008000', 
      message: 'Build Started', 
      teamDomain: 'devops-dxa2539', 
      tokenCredentialId: 'slack-secret'
