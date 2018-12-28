@@ -1,0 +1,17 @@
+node{
+	stage('SCM Checkout'){
+		git branch: 'slacknotification', url: 'https://github.com/suman-stha/devopsprojects.git'
+	}
+	stage('Compile-Package'){
+		def mvnHome = tool name: 'mymaven', type: 'maven'
+		sh "${mvnHome}/bin/mvn package"
+	}
+	stage('Slack Notification'){
+	slackSend baseUrl: 'https://hooks.slack.com/services/',
+     channel: '#devops', color: '#439FE0', 
+     message: 'Build Started: "${env.JOB_NAME}" "${env.BUILD_NUMBER}"', 
+     teamDomain: 'devops-dxa2539', 
+     tokenCredentialId: 'slack-secret'
+	}
+
+}
