@@ -1,3 +1,5 @@
+# Jnekins Server
+
 Default java version in AWS Centos
 
 ```
@@ -59,6 +61,59 @@ sudo service jenkins start
 
 ```
 
+Install Docker 
+
+* Step 1: Create Yum Repo
+
+```
+sudo yum check-update
+
+sudo yum update -y 
+
+sudo nano /etc/yum.repos.d/docker.repo
+
+[docker-repo]
+Name=Docker Repository
+Baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enable=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+
+```
+
+Step 2: Clean Yum Cache and Yum Update all Package
+
+```
+yum clean all
+
+yum repolist
+
+yum update
+
+```
+
+Step 3: Command to Install Docker-Engine and start docker on Amazon Linux
+
+```
+yum install docker-engine
+
+systemctl enable docker
+
+systemctl start docker
+
+```
+
+Step 4: Adding/providing ec2-user to docker group
+
+```
+sudo usermod -aG docker $(whoami)
+
+sudo usermod -aG docker jenkins
+
+sudo service jenkins restart
+
+```
+
 Install Apache Maven
 
 ```
@@ -89,4 +144,38 @@ install git
 sudo yum install git -y
 ```
 
+# Application server
+
+* Configure locale in ubuntu
+```
+curl -sL https://raw.githubusercontent.com/prabhatpankaj/ubuntustarter/master/initial.sh | sh
+```
+
+* Install Docker
+```
+sudo su
+
+cd
+
+curl -sSL https://get.docker.com/ | sh
+```
+
+* Create the docker group.
+```
+sudo groupadd docker
+```
+* Add the user to the docker group.
+```
+exit
+sudo usermod -aG docker ubuntu
+newgrp docker
+
+```
+*Log out and log back in to ensure docker runs with correct permissions.
+Start docker.
+```
+sudo service docker start
+
+docker ps
+```
 
