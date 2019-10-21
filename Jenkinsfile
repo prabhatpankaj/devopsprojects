@@ -46,6 +46,7 @@ node{
 	}
 	stage('Deploy to Tomcat'){
 		sshagent(['tomcatserver']) {
+<<<<<<< HEAD
 		sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@54.169.210.48:/opt/tomcat9/webapps/'
 	}
 	}
@@ -53,4 +54,15 @@ node{
 		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#intelycore09', color: '#439FE0', message: 'New Build deployed test', teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
 	}
 >>>>>>> upstream/slacknotification
+=======
+		sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@18.141.11.191:/opt/tomcat9/webapps/'
+	}
+	}
+	stage('Slack Notification'){
+		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#intelycore09', color: '#439FE0', message: 'New Build deployed test', teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
+	}
+	stage('Email Notification'){
+	mail bcc: '', body: 'build success done', cc: '', from: 'prabhatiitbhu@gmail.com', replyTo: 'prabhatiitbhu@gmail.com', subject: 'build success', to: 'prabhat@aptence.com'
+	}
+>>>>>>> upstream/smtpjenkins
 }
