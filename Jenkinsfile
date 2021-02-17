@@ -5,14 +5,7 @@ node{
 	}
   
   stage('Compile-Package'){
-	 def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+	 def mvnHome = tool name: 'maven-3.6.3', type: 'maven'
   	 sh "${mvnHome}/bin/mvn package"
 	}
-	
-	stage('deploy to Tomcat') {
-	  sh 'who'
-	  sh 'scp -i /home/ec2-user/jenkins-demo.pem -o StrictHostKeyChecking=no target/*.war ec2-user@100.26.175.204:/opt/tomcat9/webapps/'
-	}
-  
-  
 }
