@@ -100,7 +100,7 @@ echo $JAVA_HOME
 ```
 cd /opt
 
-sudo wget https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.50/src/apache-tomcat-9.0.50-src.tar.gz
+sudo wget https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.50/bin/apache-tomcat-9.0.50.tar.gz
 
 sudo tar -xvf apache-tomcat-9.0.50-src.tar.gz
 
