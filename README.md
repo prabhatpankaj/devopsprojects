@@ -102,9 +102,9 @@ cd /opt
 
 sudo wget https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.50/src/apache-tomcat-9.0.50-src.tar.gz
 
-sudo tar -xvf apache-tomcat-9.0.38.tar.gz
+sudo tar -xvf apache-tomcat-9.0.50-src.tar.gz
 
-sudo mv apache-tomcat-9.0.38 tomcat9
+sudo mv apache-tomcat-9.0.50-src tomcat9
 
 echo "export CATALINA_HOME="/opt/tomcat9"" >> ~/.bashrc
 
