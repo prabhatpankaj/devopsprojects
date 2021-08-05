@@ -46,6 +46,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 source .bash_profile
 
+
 ```
 install jenkins
 
